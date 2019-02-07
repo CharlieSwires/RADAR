@@ -2,6 +2,7 @@ package main.java.model;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -52,13 +53,22 @@ public class ModelService {
 			trks.add(trk);
 		}
 	}
+	static Date dold = new Date();
+	static boolean firstTime = true;
 	public Tracks getTracks() {
+		Date dnew = new Date();
+		double deltat = (dnew.getTime() - dold.getTime())/1000.0;
+		if (firstTime) {
+			deltat = 0.0;
+			firstTime=false;
+		}
 		Tracks ts = new Tracks();
 		for(Track track:trks) {
-			track.setNmetres(track.getNmetres()+track.getDnmetrespersecond());
-			track.setEmetres(track.getEmetres()+track.getDemetrespersecond());
-			track.setHmetres(track.getHmetres()+track.getDhmetrespersecond());
+			track.setNmetres((long)(track.getNmetres()+track.getDnmetrespersecond()*deltat));
+			track.setEmetres((long)(track.getEmetres()+track.getDemetrespersecond()*deltat));
+			track.setHmetres((long)(track.getHmetres()+track.getDhmetrespersecond()*deltat));
 		}
+		dold = dnew;
 		ts.setTracks(trks);
 		return ts;
 	}
