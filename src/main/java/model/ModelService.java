@@ -66,7 +66,9 @@ public class ModelService {
 		for(Track track:trks) {
 			track.setNmetres((long)(track.getNmetres()+track.getDnmetrespersecond()*deltat));
 			track.setEmetres((long)(track.getEmetres()+track.getDemetrespersecond()*deltat));
-			track.setHmetres((long)(track.getHmetres()+track.getDhmetrespersecond()*deltat));
+			long h = (long)(track.getHmetres()+track.getDhmetrespersecond()*deltat);
+			h = (h > 0)? h: 0L;
+			track.setHmetres(h);
 		}
 		dold = dnew;
 		ts.setTracks(trks);
