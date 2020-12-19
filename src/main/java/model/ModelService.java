@@ -15,7 +15,7 @@ public class ModelService {
 	static final int MAX_HT = 100000;
 	static final long MAX_RANGE = 500000;
 	static final long MIN_RANGE = 100;
-	static final long MAX_VEL = 10000;
+	static final long MAX_VEL = 330*2;
 	static final long MIN_VEL = 0;
 	
 	public ModelService() {
