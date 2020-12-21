@@ -4,7 +4,7 @@ Generates a random field of aircraft with random velocities.
 
 Build
 -----
-mvn package builds the war file RADAR.war in target.
+Built from eclipse (mvn package) builds the war file RADAR.war in target.
 
 Deployment
 ----------
